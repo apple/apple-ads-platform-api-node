@@ -1,0 +1,11 @@
+# development / tooling
+.generated/
+tests/
+coverage/
+*.test.ts
+jest.config.ts
+tsconfig.test.json
+.idea/
+.vscode/
+scripts/
+openapitools.json

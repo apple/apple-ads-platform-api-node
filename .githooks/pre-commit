@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# If spec.version or patch.version is part of this commit, re-sync the
+# computed library version into package.json and stage it so the commit
+# remains internally consistent.
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+cd "$ROOT_DIR"
+
+if git diff --cached --name-only | grep -qE '^(spec|patch)\.version$'; then
+  npm run --silent sync-version
+  git add package.json
+fi

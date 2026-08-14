@@ -1,0 +1,49 @@
+{
+  "name": "@apple/apple-ads-platform",
+  "version": "1.109.0",
+  "description": "Node.js client library for the Apple Ads Platform API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint src tests --fix",
+    "audit": "npm audit --omit=dev --audit-level=high",
+    "install-hooks": "git config core.hooksPath .githooks || true",
+    "prepare": "npm run install-hooks && npm run build",
+    "sync-version": "npm pkg set version=$(bash scripts/lib_version.sh)",
+    "check-version": "bash scripts/check_version.sh",
+    "prepack": "npm run sync-version && npm run build",
+    "update-deps": "npx npm-check-updates -u --target minor && npm install"
+  },
+  "keywords": [
+    "apple",
+    "ads"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "agentkeepalive": "^4.6.0",
+    "axios": "1.18.1",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/parser": "^8.59.2",
+    "axios-mock-adapter": "^2.1.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-license-header": "^0.9.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.8.2"
+  }
+}

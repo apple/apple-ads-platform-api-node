@@ -1,0 +1,29 @@
+/* tslint:disable */
+/* eslint-disable */
+{{>licenseInfo}}
+
+
+import type { Configuration } from './configuration{{importFileExtension}}';
+// Some imports not used depending on template conditions
+// @ts-ignore
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+
+export interface RequestArgs {
+    url: string;
+    options: RawAxiosRequestConfig;
+}
+
+export class BaseAPI {
+    constructor(
+        protected basePath: string,
+        protected axios: AxiosInstance,
+        protected configuration?: Configuration,
+    ) {}
+};
+
+export class RequiredError extends Error {
+    constructor(public field: string, msg?: string) {
+        super(msg);
+        this.name = "RequiredError"
+    }
+}

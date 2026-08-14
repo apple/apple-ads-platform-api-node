@@ -1,0 +1,50 @@
+/* tslint:disable */
+{{>licenseInfo}}
+
+export interface ConfigurationParameters {
+    baseOptions?: any;
+    formDataCtor?: new () => any;
+}
+
+export class Configuration {
+    /**
+     * base options for axios calls
+     */
+    baseOptions?: any;
+    /**
+     * The FormData constructor that will be used to create multipart form data
+     * requests. You can inject this here so that execution environments that
+     * do not support the FormData class can still run the generated client.
+     *
+     * @type {new () => FormData}
+     */
+    formDataCtor?: new () => any;
+
+    constructor(param: ConfigurationParameters = {}) {
+        this.baseOptions = {
+            ...param.baseOptions,
+            headers: {
+                {{#httpUserAgent}}
+                'User-Agent': "{{httpUserAgent}}",
+                {{/httpUserAgent}}
+                ...param.baseOptions?.headers,
+            },
+        };
+        this.formDataCtor = param.formDataCtor;
+    }
+
+    /**
+     * Check if the given MIME is a JSON MIME.
+     * JSON MIME examples:
+     *   application/json
+     *   application/json; charset=UTF8
+     *   APPLICATION/JSON
+     *   application/vnd.company+json
+     * @param mime - MIME (Multipurpose Internet Mail Extensions)
+     * @return True if the given MIME is JSON, false otherwise.
+     */
+    public isJsonMime(mime: string): boolean {
+        const jsonMime: RegExp = /^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$/i;
+        return mime !== null && jsonMime.test(mime);
+    }
+}
