@@ -18,7 +18,7 @@ import type { Money } from './money';
  */
 export interface AppsMetrics {
     /**
-     * Report date in YYYY-MM-DD format.
+     * Report date. YYYY-MM-DD for DAILY, WEEKLY and MONTHLY granularity; YYYY-MM-DD HH for HOURLY granularity.
      */
     'date'?: string;
     'localSpend'?: Money;

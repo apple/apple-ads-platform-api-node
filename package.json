@@ -1,6 +1,6 @@
 {
   "name": "@apple/apple-ads-platform",
-  "version": "1.109.0",
+  "version": "1.117.0",
   "description": "Node.js client library for the Apple Ads Platform API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

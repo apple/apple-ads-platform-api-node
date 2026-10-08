@@ -44,7 +44,7 @@ export interface ReportingKeyword {
 }
 
 export enum ReportingKeywordStatusEnum {
-    Active = 'ACTIVE',
+    Enabled = 'ENABLED',
     Paused = 'PAUSED',
     Deleted = 'DELETED'
 }

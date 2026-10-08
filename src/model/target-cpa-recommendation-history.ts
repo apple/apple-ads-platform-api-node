@@ -51,10 +51,6 @@ export interface TargetCpaRecommendationHistory {
     'impression'?: number;
     'ttr'?: number;
     'taps'?: number;
-    'expectedInstalls'?: number;
-    'expectedSpend'?: RecommendationMoney;
-    'expectedTaps'?: number;
-    'expectedCPA'?: RecommendationMoney;
 }
 
 

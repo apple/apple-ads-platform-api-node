@@ -16,5 +16,6 @@
 export interface ErrorDetail {
     'code': string;
     'message'?: string | null;
+    'info'?: { [key: string]: any; };
 }
 

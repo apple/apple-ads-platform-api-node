@@ -38,11 +38,7 @@ export interface LocationGroup {
      */
     'systemStatus'?: LocationGroupSystemStatusEnum;
     /**
-     * RSQL query for DYNAMIC type (read-only, generated from rules)
-     */
-    'query'?: string;
-    /**
-     * Structured rules for DYNAMIC groups. Converted to RSQL `query` on the server. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS (single value), IN, NOT_IN (multi-value with `value` array). 
+     * Structured rules for DYNAMIC groups. Converted to RSQL on the server. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS (single value), IN, NOT_IN (multi-value with `value` array). 
      */
     'rules'?: Array<Rule>;
     /**
