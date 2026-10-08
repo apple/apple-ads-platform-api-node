@@ -139,6 +139,10 @@ import type { KeywordCreateBulkRequest } from '../model';
 // @ts-ignore
 import type { KeywordCreateBulkResponse } from '../model';
 // @ts-ignore
+import type { KeywordDeleteBulkRequest } from '../model';
+// @ts-ignore
+import type { KeywordDeleteBulkResponse } from '../model';
+// @ts-ignore
 import type { KeywordQueryResponse } from '../model';
 // @ts-ignore
 import type { KeywordResponse } from '../model';
@@ -170,6 +174,10 @@ import type { NegativeKeywordCreate } from '../model';
 import type { NegativeKeywordCreateBulkRequest } from '../model';
 // @ts-ignore
 import type { NegativeKeywordCreateBulkResponse } from '../model';
+// @ts-ignore
+import type { NegativeKeywordDeleteBulkRequest } from '../model';
+// @ts-ignore
+import type { NegativeKeywordDeleteBulkResponse } from '../model';
 // @ts-ignore
 import type { NegativeKeywordQueryResponse } from '../model';
 // @ts-ignore
@@ -831,7 +839,7 @@ export const AppleAdsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+         * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
          * @summary Get app ad group reports
          * @param {string} xApContext 
          * @param {AppsReportingRequest} appsReportingRequest 
@@ -913,7 +921,7 @@ export const AppleAdsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+         * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
          * @summary Get app campaign reports
          * @param {string} xApContext 
          * @param {AppsReportingRequest} appsReportingRequest 
@@ -2461,6 +2469,44 @@ export const AppleAdsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
+         * BulkDelete for keywords
+         * @param {string} xApContext 
+         * @param {KeywordDeleteBulkRequest} [keywordDeleteBulkRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        keywordsBulkDeletePost: async (xApContext: string, keywordDeleteBulkRequest?: KeywordDeleteBulkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xApContext' is not null or undefined
+            assertParamExists('keywordsBulkDeletePost', 'xApContext', xApContext)
+            const localVarPath = `/keywords/bulk-delete`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, UNUSED_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            if (xApContext != null) {
+                localVarHeaderParameter['X-Ap-Context'] = String(xApContext);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(keywordDeleteBulkRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * BulkUpdate for keywords
          * @param {string} xApContext 
          * @param {KeywordUpdateBulkRequest} [keywordUpdateBulkRequest] 
@@ -2726,6 +2772,44 @@ export const AppleAdsApiAxiosParamCreator = function (configuration?: Configurat
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(negativeKeywordCreateBulkRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * BulkDelete for negative-keywords
+         * @param {string} xApContext 
+         * @param {NegativeKeywordDeleteBulkRequest} [negativeKeywordDeleteBulkRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        negativeKeywordsBulkDeletePost: async (xApContext: string, negativeKeywordDeleteBulkRequest?: NegativeKeywordDeleteBulkRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xApContext' is not null or undefined
+            assertParamExists('negativeKeywordsBulkDeletePost', 'xApContext', xApContext)
+            const localVarPath = `/negative-keywords/bulk-delete`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, UNUSED_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            if (xApContext != null) {
+                localVarHeaderParameter['X-Ap-Context'] = String(xApContext);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(negativeKeywordDeleteBulkRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4405,7 +4489,7 @@ export const AppleAdsApiFp = function(configuration?: Configuration) {
             return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
         },
         /**
-         * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+         * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
          * @summary Get app ad group reports
          * @param {string} xApContext 
          * @param {AppsReportingRequest} appsReportingRequest 
@@ -4429,7 +4513,7 @@ export const AppleAdsApiFp = function(configuration?: Configuration) {
             return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
         },
         /**
-         * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+         * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
          * @summary Get app campaign reports
          * @param {string} xApContext 
          * @param {AppsReportingRequest} appsReportingRequest 
@@ -4884,6 +4968,17 @@ export const AppleAdsApiFp = function(configuration?: Configuration) {
             return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
         },
         /**
+         * BulkDelete for keywords
+         * @param {string} xApContext 
+         * @param {KeywordDeleteBulkRequest} [keywordDeleteBulkRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async keywordsBulkDeletePost(xApContext: string, keywordDeleteBulkRequest?: KeywordDeleteBulkRequest, options?: RawAxiosRequestConfig): Promise<(axios: AxiosInstance, basePath: string) => AxiosPromise<KeywordDeleteBulkResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.keywordsBulkDeletePost(xApContext, keywordDeleteBulkRequest, options);
+            return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
+        },
+        /**
          * BulkUpdate for keywords
          * @param {string} xApContext 
          * @param {KeywordUpdateBulkRequest} [keywordUpdateBulkRequest] 
@@ -4959,6 +5054,17 @@ export const AppleAdsApiFp = function(configuration?: Configuration) {
          */
         async negativeKeywordsBulkCreatePost(xApContext: string, negativeKeywordCreateBulkRequest?: NegativeKeywordCreateBulkRequest, options?: RawAxiosRequestConfig): Promise<(axios: AxiosInstance, basePath: string) => AxiosPromise<NegativeKeywordCreateBulkResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.negativeKeywordsBulkCreatePost(xApContext, negativeKeywordCreateBulkRequest, options);
+            return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
+        },
+        /**
+         * BulkDelete for negative-keywords
+         * @param {string} xApContext 
+         * @param {NegativeKeywordDeleteBulkRequest} [negativeKeywordDeleteBulkRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async negativeKeywordsBulkDeletePost(xApContext: string, negativeKeywordDeleteBulkRequest?: NegativeKeywordDeleteBulkRequest, options?: RawAxiosRequestConfig): Promise<(axios: AxiosInstance, basePath: string) => AxiosPromise<NegativeKeywordDeleteBulkResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.negativeKeywordsBulkDeletePost(xApContext, negativeKeywordDeleteBulkRequest, options);
             return (axios: AxiosInstance, basePath: string) => createRequestFunction(localVarAxiosArgs)(axios, basePath);
         },
         /**
@@ -5571,7 +5677,7 @@ export class AppleAdsApi extends BaseAPI {
     }
 
     /**
-     * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+     * Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
      * @summary Get app ad group reports
      * @param {string} xApContext 
      * @param {AppsReportingRequest} appsReportingRequest 
@@ -5595,7 +5701,7 @@ export class AppleAdsApi extends BaseAPI {
     }
 
     /**
-     * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+     * Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
      * @summary Get app campaign reports
      * @param {string} xApContext 
      * @param {AppsReportingRequest} appsReportingRequest 
@@ -6050,6 +6156,17 @@ export class AppleAdsApi extends BaseAPI {
     }
 
     /**
+     * BulkDelete for keywords
+     * @param {string} xApContext 
+     * @param {KeywordDeleteBulkRequest} [keywordDeleteBulkRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public keywordsBulkDeletePost(xApContext: string, keywordDeleteBulkRequest?: KeywordDeleteBulkRequest, options?: RawAxiosRequestConfig) {
+        return AppleAdsApiFp(this.configuration).keywordsBulkDeletePost(xApContext, keywordDeleteBulkRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * BulkUpdate for keywords
      * @param {string} xApContext 
      * @param {KeywordUpdateBulkRequest} [keywordUpdateBulkRequest] 
@@ -6125,6 +6242,17 @@ export class AppleAdsApi extends BaseAPI {
      */
     public negativeKeywordsBulkCreatePost(xApContext: string, negativeKeywordCreateBulkRequest?: NegativeKeywordCreateBulkRequest, options?: RawAxiosRequestConfig) {
         return AppleAdsApiFp(this.configuration).negativeKeywordsBulkCreatePost(xApContext, negativeKeywordCreateBulkRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * BulkDelete for negative-keywords
+     * @param {string} xApContext 
+     * @param {NegativeKeywordDeleteBulkRequest} [negativeKeywordDeleteBulkRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public negativeKeywordsBulkDeletePost(xApContext: string, negativeKeywordDeleteBulkRequest?: NegativeKeywordDeleteBulkRequest, options?: RawAxiosRequestConfig) {
+        return AppleAdsApiFp(this.configuration).negativeKeywordsBulkDeletePost(xApContext, negativeKeywordDeleteBulkRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -62,16 +62,6 @@ export interface TargetCpaRecommendation {
     'averageCPT'?: RecommendationMoney;
     'averageCPA'?: RecommendationMoney;
     /**
-     * Expected tap count
-     */
-    'expectedTaps'?: number;
-    'expectedCPA'?: RecommendationMoney;
-    /**
-     * Expected install count
-     */
-    'expectedInstalls'?: number;
-    'expectedSpend'?: RecommendationMoney;
-    /**
      * Historical impression count
      */
     'impression'?: number;

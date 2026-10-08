@@ -26,7 +26,7 @@ import type { Sorting } from './sorting';
 import type { TimeRange } from './time-range';
 
 /**
- * Request body for APPS promoted object type. Supported groupBy values: deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion. Entity-specific groupBy restrictions apply server-side (e.g. KEYWORD and SEARCHTERM exclude ageRange, gender, countryCode, adminArea, locality). 
+ * Request body for APPS promoted object type. Supported groupBy values: deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion. Entity-specific groupBy restrictions apply server-side (e.g. KEYWORD and SEARCHTERM exclude ageRange, gender, countryCode, adminArea, locality). 
  */
 export interface AppsReportingRequest {
     'pagination'?: RequestPagination;
@@ -48,7 +48,6 @@ export enum AppsReportingRequestGroupByEnum {
     CountryCode = 'countryCode',
     AdminArea = 'adminArea',
     Locality = 'locality',
-    Storefront = 'storefront',
     CountryOrRegion = 'countryOrRegion'
 }
 

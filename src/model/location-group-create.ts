@@ -22,7 +22,7 @@ export interface LocationGroupCreate {
     'adAccountId': string;
     'groupType': LocationGroupType;
     /**
-     * Structured rules for DYNAMIC groups. Use instead of raw `query`. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS, IN, NOT_IN. Use `value` for all operators (string for EQUALS/NOT_EQUALS, array for IN/NOT_IN). 
+     * Structured rules for DYNAMIC groups. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS, IN, NOT_IN. Use `value` for all operators (string for EQUALS/NOT_EQUALS, array for IN/NOT_IN). 
      */
     'rules'?: Array<Rule>;
     /**

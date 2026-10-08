@@ -38,6 +38,10 @@ export interface DailyCapRecommendation {
     'id'?: string;
     'recommendationType'?: RecommendationCategory;
     /**
+     * The ad account this recommendation belongs to.
+     */
+    'adAccountId'?: number;
+    /**
      * Campaign identifier
      */
     'promotedObjectId'?: string;
@@ -76,10 +80,8 @@ export interface DailyCapRecommendation {
      * Historical tap count
      */
     'taps'?: number;
-    'expectedImpressions'?: number;
     'expectedInstalls'?: number;
     'expectedSpend'?: RecommendationMoney;
-    'expectedTaps'?: number;
     'expectedCpa'?: RecommendationMoney;
     'bidStrategy'?: RecommendationBidStrategy;
 }

@@ -51,20 +51,8 @@ export interface DailyCapRecommendationHistory {
     'impression'?: number;
     'ttr'?: number;
     'taps'?: number;
-    'expectedImpressionsLow'?: number;
-    'expectedImpressionsHigh'?: number;
-    'expectedImpressions'?: number;
-    'expectedInstallsLow'?: number;
-    'expectedInstallsHigh'?: number;
     'expectedInstalls'?: number;
-    'expectedSpendLow'?: RecommendationMoney;
-    'expectedSpendHigh'?: RecommendationMoney;
     'expectedSpend'?: RecommendationMoney;
-    'expectedTapsLow'?: number;
-    'expectedTapsHigh'?: number;
-    'expectedTaps'?: number;
-    'expectedCpaLow'?: RecommendationMoney;
-    'expectedCpaHigh'?: RecommendationMoney;
     'expectedCpa'?: RecommendationMoney;
 }
 
